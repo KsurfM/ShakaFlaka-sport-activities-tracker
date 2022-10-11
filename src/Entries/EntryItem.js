@@ -1,9 +1,12 @@
+import { useHistory } from "react-router-dom";
 import Card from "../ui/Card";
 import classes from "./EntryItem.module.css";
 
 const EntryItem = (props) => {
-  //   function showDetailsHandler() {
-  //     router.push("/" + props.id);
+  const history = useHistory();
+  const showDetailsHandler = () => {
+    history.push("/" + props.id);
+  };
 
   return (
     <li className={classes.item}>
@@ -14,9 +17,10 @@ const EntryItem = (props) => {
         <div className={classes.content}>
           <h3>{props.title}</h3>
           <address>{props.date}</address>
+          <h3>{props.location}</h3>
         </div>
         <div className={classes.actions}>
-          <button>Show Details</button>
+          <button onClick={showDetailsHandler}>Show Details</button>
         </div>
       </Card>
     </li>

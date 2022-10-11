@@ -59,8 +59,8 @@ const AuthForm = () => {
         //   new Date().getTime() + +data.expiresIn * 1000
         // )
         console.log(data);
-        authCtx.login(data.idToken);
-        // history.replace("/");
+        authCtx.login(data.idToken, data.localId);
+        history.replace("/my-entries");
       })
       .catch((err) => {
         alert(err.message);

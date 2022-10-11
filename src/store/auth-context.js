@@ -3,6 +3,7 @@ import { useHistory } from "react-router-dom";
 
 const AuthContext = React.createContext({
   token: "",
+  userUid: "",
   isLoggedIn: false,
   login: (token) => {},
   logout: () => {},
@@ -10,6 +11,7 @@ const AuthContext = React.createContext({
 
 export const AuthContextProvier = (props) => {
   const [token, setToken] = useState();
+  const [userUid, setUserUid] = useState();
   const history = useHistory();
   const userIsLoggedIn = !!token;
 
@@ -18,8 +20,9 @@ export const AuthContextProvier = (props) => {
     history.replace("/");
   };
 
-  const loginHandler = (tokenData) => {
+  const loginHandler = (tokenData, userUid) => {
     setToken(tokenData);
+    setUserUid(userUid);
   };
 
   const contextValue = {
@@ -27,6 +30,7 @@ export const AuthContextProvier = (props) => {
     isLoggedIn: userIsLoggedIn,
     login: loginHandler,
     logout: logoutHandler,
+    userUid: userUid,
   };
 
   return (

@@ -7,6 +7,7 @@ import SignInPage from "./pages/SignInPage";
 import MyEntriesPage from "./pages/MyEntriesPage";
 import AuthContext from "./store/auth-context";
 import NewEntryPage from "./pages/NewEntryPage";
+import EntryDetailsPage from "./Entries/EntryDetalis";
 
 function App() {
   const authCtx = useContext(AuthContext);
@@ -29,6 +30,11 @@ function App() {
           {authCtx.isLoggedIn && (
             <Route path="/new-entry" exact>
               <NewEntryPage />
+            </Route>
+          )}
+          {authCtx.isLoggedIn && (
+            <Route path="/:entryId" exact>
+              <EntryDetailsPage />
             </Route>
           )}
         </Switch>
