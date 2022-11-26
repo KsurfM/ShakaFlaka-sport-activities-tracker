@@ -61,6 +61,8 @@ const AuthForm = () => {
         console.log(data);
         authCtx.login(data.idToken, data.localId);
         history.replace("/my-entries");
+        localStorage.setItem("idToken", data.idToken);
+        localStorage.setItem("userUid", data.localId);
       })
       .catch((err) => {
         alert(err.message);
