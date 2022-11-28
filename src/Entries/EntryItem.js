@@ -6,12 +6,13 @@ import AuthContext from "../store/auth-context";
 
 const EntryItem = (props) => {
   const authCtx = useContext(AuthContext);
+  const deleteEntryHandler = () => {
+    authCtx.deleteEntry(props.id);
+  };
   const history = useHistory();
   const showDetailsHandler = () => {
     history.push("/" + props.id);
   };
-
-  const deleteEntryHandler = () => {};
 
   return (
     <li className={classes.item}>
@@ -29,7 +30,12 @@ const EntryItem = (props) => {
 
           <button onClick={showDetailsHandler}>Show Details</button>
 
-          <button className={classes.button_cancel}>X</button>
+          <button
+            onClick={deleteEntryHandler}
+            className={classes.button_cancel}
+          >
+            X
+          </button>
         </div>
       </Card>
     </li>
