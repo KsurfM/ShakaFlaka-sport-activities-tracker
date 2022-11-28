@@ -8,7 +8,6 @@ const AuthContext = React.createContext({
   isLoggedIn: false,
   login: (token) => {},
   logout: () => {},
-  deleteEntry: () => {},
 });
 
 export const AuthContextProvier = (props) => {
@@ -38,22 +37,12 @@ export const AuthContextProvier = (props) => {
     setUserUid(userUid);
   };
 
-  const deleteEntryHandler = async (entryId) => {
-    await fetch(
-      `https://shakaflaka-31a87-default-rtdb.europe-west1.firebasedatabase.app/users/${userUid}/${entryId}.json`,
-      {
-        method: "DELETE",
-      }
-    );
-  };
-
   const contextValue = {
     token: token,
     isLoggedIn: userIsLoggedIn,
     login: loginHandler,
     logout: logoutHandler,
     userUid: userUid,
-    deleteEntry: deleteEntryHandler,
   };
 
   return (

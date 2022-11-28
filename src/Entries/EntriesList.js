@@ -17,18 +17,20 @@ const EntriesList = () => {
     const data = await response.json();
     console.log(data);
 
-    const objectLength = Object.keys(data).length;
-    for (let i = 0; i < objectLength; i++) {
-      const entryKey = Object.keys(data)[i];
-      const helperObject = data[entryKey];
-      const finalData = { ...helperObject, id: entryKey };
+    if (data) {
+      const objectLength = Object.keys(data).length;
+      for (let i = 0; i < objectLength; i++) {
+        const entryKey = Object.keys(data)[i];
+        const helperObject = data[entryKey];
+        const finalData = { ...helperObject, id: entryKey };
 
-      entryArray.push(finalData);
+        entryArray.push(finalData);
 
-      setEntryArray(entryArray);
-      authCtx.userEntries = entryArray;
+        setEntryArray(entryArray);
+        authCtx.userEntries = entryArray;
+      }
+      console.log(authCtx.userEntries);
     }
-    console.log(authCtx.userEntries);
   }, []);
 
   useEffect(() => {
