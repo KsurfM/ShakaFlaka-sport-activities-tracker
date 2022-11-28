@@ -28,6 +28,8 @@
 .actions {
   padding: 1.5rem;
   text-align: center;
+  display: flex;
+  justify-content: space-between;
 }
 
 .actions button {
@@ -43,4 +45,8 @@
 .actions button:hover,
 .actions button:active {
   background-color: #ffe2ed;
+}
+
+.button_hidden {
+  visibility: hidden;
 }
