@@ -7,14 +7,20 @@ import AuthContext from "../store/auth-context";
 const EntryItem = (props) => {
   const authCtx = useContext(AuthContext);
   const userUid = authCtx.userUid;
-  const deleteEntryHandler = async (entryId) => {
+
+  const deleteEntryHandler = () => {
+    props.onDelete(props.id);
+    /*
     await fetch(
       `https://shakaflaka-31a87-default-rtdb.europe-west1.firebasedatabase.app/users/${userUid}/${props.id}.json`,
       {
         method: "DELETE",
       }
     );
+    authCtx.setDummy();
+    */
   };
+
   const history = useHistory();
   const showDetailsHandler = () => {
     history.push("/" + props.id);

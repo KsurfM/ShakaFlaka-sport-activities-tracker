@@ -4,7 +4,6 @@ import { useHistory } from "react-router-dom";
 const AuthContext = React.createContext({
   token: "",
   userUid: "",
-  userEntries: "",
   isLoggedIn: false,
   login: (token) => {},
   logout: () => {},
@@ -13,6 +12,7 @@ const AuthContext = React.createContext({
 export const AuthContextProvier = (props) => {
   const [token, setToken] = useState();
   const [userUid, setUserUid] = useState();
+  const [dummy, setDummy] = useState(false);
   const history = useHistory();
 
   useEffect(() => {
